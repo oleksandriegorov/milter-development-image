@@ -8,7 +8,7 @@ RUN git clone https://github.com/DaveGamble/cJSON.git && cd cJSON && make && mak
 COPY milter-manager_repo_setup.rpm.sh ./ 
 RUN ./milter-manager_repo_setup.rpm.sh
 RUN yum install -y milter-manager
-RUN yum install -y vim
+RUN yum install -y vim gdb-gdbserver
 # Define a deploy key in order to avoid sensitive information being stored in a github. I can simply type it in during docker run
 ENV deploy_key_token=nodefaultvalue
 ENV SHELL=/bin/bash
