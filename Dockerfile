@@ -8,8 +8,10 @@ RUN git clone https://github.com/DaveGamble/cJSON.git && cd cJSON && make && mak
 COPY milter-manager_repo_setup.rpm.sh ./ 
 RUN ./milter-manager_repo_setup.rpm.sh
 RUN yum install -y milter-manager
+RUN yum install -y vim
 # Define a deploy key in order to avoid sensitive information being stored in a github. I can simply type it in during docker run
 ENV deploy_key_token=nodefaultvalue
+ENV SHELL=/bin/bash
 # post-cmfilter needs to examine this library path for several of its libraries: libcidr and libcjson if I am not mistaken
 ENV LD_LIBRARY_PATH=/usr/local/lib/
 # Set up entry point : compile milter, start rsyslogd, milter, bash shell
